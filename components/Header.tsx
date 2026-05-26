@@ -35,18 +35,23 @@ export default function Header() {
 
           {/* Nav Links */}
           <div className="hidden lg:flex gap-[22px]">
-            {['Skincare', 'Hair', 'Wellness', 'Sleep', 'More'].map((item) => (
-              <a
-                key={item}
-                href="#"
+            {[
+              { label: 'Skincare', slug: 'skincare' },
+              { label: 'Hair', slug: 'hair' },
+              { label: 'Wellness', slug: 'wellness' },
+              { label: 'Sleep', slug: 'sleep' },
+            ].map((item) => (
+              <Link
+                key={item.slug}
+                href={`/category/${item.slug}`}
                 className={`text-[14.5px] font-500 relative pb-0.5 ${
-                  item === 'Skincare'
+                  item.slug === 'skincare'
                     ? 'text-[var(--sage)] border-b-2 border-[var(--sage)]'
                     : 'text-[var(--ink)] hover:text-[var(--sage-dark)]'
                 }`}
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </div>
         </nav>
